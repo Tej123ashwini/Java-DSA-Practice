@@ -1,0 +1,303 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <!-- Character encoding -->
+    <meta charset="UTF-8">
+
+    <!-- Responsive viewport -->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <!-- Page title -->
+    <title>College Admission Form</title>
+
+    <!-- External CSS -->
+    <link rel="stylesheet" href="style.css">
+
+</head>
+
+<body>
+
+    <!-- COLLEGE HEADING -->
+
+    <!-- Inline CSS example -->
+    <h2 style="text-align:center;">
+        P.E.S College of Engineering
+    </h2>
+
+    <h3 style="text-align: center;">
+        College Admission Form
+    </h3>
+
+
+    <!-- NAVIGATION BAR -->
+
+    <nav>
+
+        <a href="#">Home</a>
+        <a href="#">Skills</a>
+        <a href="#">About</a>
+        <a href="#">Contact</a>
+
+    </nav>
+
+
+    <!-- STUDENT REGISTRATION FORM -->
+
+    <div class="container">
+
+        <form action="/submit" method="post">
+
+            <label for="name">Student Name:</label><br>
+
+            <input
+                type="text"
+                id="name"
+                name="studentName"
+                placeholder="Enter your name"
+                required
+            >
+            <br><br>
+
+            <label for="father">Father's Name:</label><br>
+
+            <input
+                type="text"
+                id="father"
+                name="fatherName"
+                placeholder="Enter father's name"
+                required
+            >
+            <br><br>
+
+            <label for="mother">Mother's Name:</label><br>
+
+            <input
+                type="text"
+                id="mother"
+                name="motherName"
+                placeholder="Enter mother's name"
+                required
+            >
+            <br><br>
+
+            <label for="email">Email:</label><br>
+
+            <input
+                type="email"
+                id="email"
+                name="email"
+                placeholder="Enter your email"
+                required
+            >
+            <br><br>
+
+            <label for="password">Password:</label><br>
+
+            <input
+                type="password"
+                id="password"
+                name="password"
+                placeholder="Enter your password"
+                maxlength="4"
+                required
+            >
+            <br><br>
+
+            <label for="phone">Phone Number:</label><br>
+
+            <input
+                type="tel"
+                id="phone"
+                name="phone"
+                placeholder="Enter your phone number"
+                required
+            >
+            <br><br>
+
+            <label for="dob">Date of Birth:</label><br>
+
+            <input
+                type="date"
+                id="dob"
+                name="dob"
+                required
+            >
+            <br><br>
+
+            <label>Gender:</label><br>
+
+            <label for="male">Male</label>
+
+            <input
+                type="radio"
+                id="male"
+                name="gender"
+                value="Male"
+            >
+
+            <label for="female">Female</label>
+
+            <input
+                type="radio"
+                id="female"
+                name="gender"
+                value="Female"
+            >
+
+            <label for="other">Other</label>
+
+            <input
+                type="radio"
+                id="other"
+                name="gender"
+                value="Other"
+            >
+            <br><br>
+
+            <label for="department">Department:</label><br>
+
+            <select
+                id="department"
+                name="department"
+                required
+            >
+
+                <option value="">
+                    -- Select Department --
+                </option>
+
+                <option value="CSE">
+                    Computer Science & Engineering
+                </option>
+
+                <option value="ECE">
+                    Electronics & Communication Engineering
+                </option>
+
+                <option value="EEE">
+                    Electrical & Electronics Engineering
+                </option>
+
+                <option value="Civil">
+                    Civil Engineering
+                </option>
+
+                <option value="Mechanical">
+                    Mechanical Engineering
+                </option>
+
+            </select>
+            <br><br>
+
+            <label for="address">Address:</label><br>
+
+            <textarea
+                id="address"
+                name="address"
+                rows="4"
+                cols="35"
+                placeholder="Enter your address"
+            ></textarea>
+            <br><br>
+
+            <label>Hobbies</label>
+
+            <div class="options">
+
+                <input type="checkbox">
+                Reading
+
+                <input type="checkbox">
+                Coding
+
+                <input type="checkbox">
+                Sports
+
+            </div>
+
+            <br>
+
+            <label>Languages Known:</label><br>
+
+            <input
+                type="checkbox"
+                id="english"
+                name="language"
+                value="English"
+            >
+
+            <label for="english">English</label>
+
+
+            <input
+                type="checkbox"
+                id="kannada"
+                name="language"
+                value="Kannada"
+            >
+
+            <label for="kannada">Kannada</label>
+            <input
+                type="checkbox"
+                id="hindi"
+                name="language"
+                value="Hindi"
+            >
+
+            <label for="hindi">Hindi</label>
+            <input
+                type="checkbox"
+                id="telugu"
+                name="language"
+                value="Telugu"
+            >
+
+            <label for="telugu">Telugu</label>
+            <br><br>
+
+            <label for="marks10">
+                Upload 10th Marksheet:
+            </label><br>
+
+            <input
+                type="file"
+                id="marks10"
+                name="marks10"
+            >
+            <br><br>
+
+            <label for="marks12">
+                Upload 12th Marksheet:
+            </label><br>
+
+            <input
+                type="file"
+                id="marks12"
+                name="marks12"
+            >
+            <br><br>
+
+
+            <!-- Buttons -->
+            <div class="buttons">
+
+                <input
+                    type="submit"
+                    value="Register"
+                >
+
+                <input
+                    type="reset"
+                    value="Reset"
+                >
+
+            </div>
+
+        </form>
+
+    </div>
+
+</body>
+</html>
