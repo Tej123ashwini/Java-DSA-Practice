@@ -1,6 +1,72 @@
+import java.util.Scanner;
+
 public class Main {
     
     static Node head;
+    static Scanner sc = new Scanner(System.in);
+
+    public static void menu() {
+
+        while(true) {
+
+        System.out.println("\n1.Append a node at begin ");
+        System.out.println("2.Append a node at end ");
+        System.out.println("3.Append a node at position ");
+        System.out.println("4.Delete the first node ");
+        System.out.println("5.Delete the last node ");
+        System.out.println("6.Delete a node by value ");
+        System.out.println("7.Display the list ");
+        System.out.println("8.Exit ");
+
+        System.out.println("\n Enter your choice: ");
+        int choice = sc.nextInt();
+
+            switch(choice) {
+            case 1:
+                System.out.println("Enter the data to be inserted at the beginning: ");
+                int data = sc.nextInt();
+                insertAtBeginning(data);
+                break;
+
+            case 2:
+                System.out.println("Enter the data to be inserted at the end: ");
+                data = sc.nextInt();
+                insertAtEnding(data);
+                break;
+
+            case 3:
+                System.out.println("Enter the data to be inserted: ");
+                data = sc.nextInt();
+                System.out.println("Enter the position: ");
+                int position = sc.nextInt();
+                insertAtPosition(data, position);
+                break;
+
+            case 4:
+                deleteFirstNode();
+                break;
+
+            case 5:
+                deleteLastNode();
+                break;
+
+            case 6:
+                System.out.println("Enter the value to be deleted: ");
+                int value = sc.nextInt();
+                deleteNodeByValue(value);
+                break;
+
+            case 7:
+                displaytheNode();
+                break;
+
+            case 8:
+                System.out.println("Thank you");
+                return;
+            
+            }
+        }
+    }
 
     // insert at beginning
     public static void insertAtBeginning(int data) {
@@ -30,6 +96,7 @@ public class Main {
 
     temp.next = newNode;
 }
+
     // insert at position
     public static void insertAtPosition(int data, int position) {
 
@@ -129,4 +196,26 @@ public class Main {
 
     System.out.println("Value not found");
 }
+
+    // display the list
+    public static void displaytheNode() {
+        
+        if (head == null) {
+            System.out.println("List is empty");
+            return;
+        }
+
+        Node temp = head;
+
+        while (temp != null) {
+            System.out.print(temp.data + " ");
+            temp = temp.next;
+        }
+    }
+
+
+public static void main(String[] args) {
+
+    menu();
+    }
 }
