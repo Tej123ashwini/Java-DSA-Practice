@@ -208,7 +208,7 @@ public class Main {
         Node temp = head;
 
         while (temp != null) {
-            System.out.print(temp.data + " ");
+            System.out.print("LinkedList contains: " +temp.data + " ");
             temp = temp.next;
         }
     }
