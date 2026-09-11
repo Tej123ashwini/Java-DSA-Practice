@@ -1,0 +1,49 @@
+.card {
+    width: 80%;
+    border:1px solid black;
+    border-radius: 1rem;
+    padding: 2rem;
+    margin: 5rem auto;
+    max-width: 400px;
+    transition: 0.3s;
+}
+
+#name:hover {
+    background-color: rgb(143, 171, 115);
+    transform: scale(1.30);
+}
+
+input {
+    width:50%;
+    padding: 0.7rem;
+    border: 1px solid black;
+}
+
+input:focus {
+    border: 2px solid blue;
+    outline: none;
+}
+
+h2::after {
+    content: "**";
+}
+h3::before {
+    content: "##";
+}
+
+.container {
+    width: 80%;
+    border:1px solid black;
+    border-radius: 1rem;
+    padding: 2rem;
+    margin: 5rem auto;
+    max-width: fit-content;
+    
+}
+h4:nth-child(even) {
+    background-color: rgb(214, 175, 175);
+}
+
+h4:nth-child(odd) {
+    background-color: rgb(94, 151, 108);
+}
