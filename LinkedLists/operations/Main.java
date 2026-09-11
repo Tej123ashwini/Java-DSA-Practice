@@ -1,116 +1,127 @@
 import java.util.Scanner;
 
 public class Main {
-    
+
     static Node head;
     static Scanner sc = new Scanner(System.in);
 
     public static void menu() {
 
-        while(true) {
+        while (true) {
 
-        System.out.println("\n1.Append a node at begin ");
-        System.out.println("2.Append a node at end ");
-        System.out.println("3.Append a node at position ");
-        System.out.println("4.Delete the first node ");
-        System.out.println("5.Delete the last node ");
-        System.out.println("6.Delete a node by value ");
-        System.out.println("7.Display the list ");
-        System.out.println("8.Exit ");
+            System.out.println("\n1.Append a node at begin ");
+            System.out.println("2.Append a node at end ");
+            System.out.println("3.Append a node at position ");
+            System.out.println("4.Delete the first node ");
+            System.out.println("5.Delete the last node ");
+            System.out.println("6.Delete a node by value ");
+            System.out.println("7.Display the list ");
+            System.out.println("8.Exit ");
 
-        System.out.println("\n Enter your choice: ");
-        int choice = sc.nextInt();
+            System.out.println("\nEnter your choice: ");
+            int choice = sc.nextInt();
 
-            switch(choice) {
-            case 1:
-                System.out.println("Enter the data to be inserted at the beginning: ");
-                int data = sc.nextInt();
-                insertAtBeginning(data);
-                break;
+            switch (choice) {
 
-            case 2:
-                System.out.println("Enter the data to be inserted at the end: ");
-                data = sc.nextInt();
-                insertAtEnding(data);
-                break;
+                case 1:
+                    System.out.println("Enter the data to be inserted at the beginning: ");
+                    int data = sc.nextInt();
+                    insertAtBeginning(data);
+                    break;
 
-            case 3:
-                System.out.println("Enter the data to be inserted: ");
-                data = sc.nextInt();
-                System.out.println("Enter the position: ");
-                int position = sc.nextInt();
-                insertAtPosition(data, position);
-                break;
+                case 2:
+                    System.out.println("Enter the data to be inserted at the end: ");
+                    data = sc.nextInt();
+                    insertAtEnding(data);
+                    break;
 
-            case 4:
-                deleteFirstNode();
-                break;
+                case 3:
+                    System.out.println("Enter the data to be inserted: ");
+                    data = sc.nextInt();
 
-            case 5:
-                deleteLastNode();
-                break;
+                    System.out.println("Enter the position: ");
+                    int position = sc.nextInt();
 
-            case 6:
-                System.out.println("Enter the value to be deleted: ");
-                int value = sc.nextInt();
-                deleteNodeByValue(value);
-                break;
+                    insertAtPosition(data, position);
+                    break;
 
-            case 7:
-                displaytheNode();
-                break;
+                case 4:
+                    deleteFirstNode();
+                    System.out.println("First node deleted in LL.");
+                    break;
 
-            case 8:
-                System.out.println("Thank you");
-                return;
-            
+                case 5:
+                    deleteLastNode();
+                    System.out.println("Last node deleted in LL.");
+                    break;
+
+                case 6:
+                    System.out.println("Enter the value to be deleted: ");
+                    int value = sc.nextInt();
+                    deleteNodeByValue(value);
+                    break;
+
+                case 7:
+                    displaytheNode();
+                    break;
+
+                case 8:
+                    reverseLL();
+                    break;
+
+                case 9:
+                    System.out.println("Thank you");
+                    return;
             }
         }
     }
 
-    // insert at beginning
-    public static void insertAtBeginning(int data) {
+    // Insert at beginning
+    public static Node insertAtBeginning(int data) {
 
         Node newNode = new Node(data);
 
         newNode.next = head;
-
         head = newNode;
+
+        return head;
     }
 
-    // insert at end
-    public static void insertAtEnding(int data) {
+    // Insert at end
+    public static Node insertAtEnding(int data) {
 
-    Node newNode = new Node(data);
+        Node newNode = new Node(data);
 
-    if (head == null) {
-        head = newNode;
-        return;
+        if (head == null) {
+            head = newNode;
+            return head;
+        }
+
+        Node temp = head;
+
+        while (temp.next != null) {
+            temp = temp.next;
+        }
+
+        temp.next = newNode;
+
+        return head;
     }
 
-    Node temp = head;
-
-    while(temp.next != null) {
-        temp = temp.next;
-    }
-
-    temp.next = newNode;
-}
-
-    // insert at position
-    public static void insertAtPosition(int data, int position) {
+    // Insert at position
+    public static Node insertAtPosition(int data, int position) {
 
         Node newNode = new Node(data);
 
         if (position == 1) {
             newNode.next = head;
             head = newNode;
-            return;
+            return head;
         }
 
         if (head == null) {
             System.out.println("Invalid position");
-            return;
+            return head;
         }
 
         Node temp = head;
@@ -119,7 +130,7 @@ public class Main {
 
             if (temp == null) {
                 System.out.println("Invalid position");
-                return;
+                return head;
             }
 
             temp = temp.next;
@@ -127,95 +138,128 @@ public class Main {
 
         if (temp == null) {
             System.out.println("Invalid position");
-            return;
+            return head;
         }
 
         newNode.next = temp.next;
         temp.next = newNode;
+
+        return head;
     }
 
-    // delete the first node
-    public static void deleteFirstNode() {
-        
+    // Delete the first node
+    public static Node deleteFirstNode() {
+
         if (head == null) {
             System.out.println("List is empty");
-            return;
+            return head;
         }
 
         head = head.next;
+
+        return head;
     }
 
-    // delete the last node
-    public static void deleteLastNode() {
-        
-        if(head == null) {
+    // Delete the last node
+    public static Node deleteLastNode() {
+
+        if (head == null) {
             System.out.println("List is empty");
-            return;
+            return head;
         }
 
         if (head.next == null) {
-        head = null;
-        return;
-    }
+            head = null;
+            return head;
+        }
 
         Node temp = head;
         Node prev = null;
 
-        while(temp.next != null) {
+        while (temp.next != null) {
             prev = temp;
             temp = temp.next;
         }
+
         prev.next = null;
 
+        return head;
     }
 
-    // delete a node by value
-    public static void deleteNodeByValue(int value) {
+    // Delete a node by value
+    public static Node deleteNodeByValue(int value) {
 
-    if (head == null) {
-        System.out.println("List is empty");
-        return;
-    }
-
-    if (head.data == value) {
-        head = head.next;
-        return;
-    }
-
-    Node temp = head;
-
-    while (temp.next != null) {
-
-        if (temp.next.data == value) {
-            temp.next = temp.next.next;
-            return;
-        }
-
-        temp = temp.next;
-    }
-
-    System.out.println("Value not found");
-}
-
-    // display the list
-    public static void displaytheNode() {
-        
         if (head == null) {
             System.out.println("List is empty");
-            return;
+            return head;
+        }
+
+        if (head.data == value) {
+            head = head.next;
+            return head;
+        }
+
+        Node temp = head;
+
+        while (temp.next != null) {
+
+            if (temp.next.data == value) {
+                temp.next = temp.next.next;
+                return head;
+            }
+
+            temp = temp.next;
+        }
+
+        System.out.println("Value not found");
+
+        return head;
+    }
+
+    // Display the list
+    public static Node displaytheNode() {
+
+        if (head == null) {
+            System.out.println("List is empty");
+            return head;
         }
 
         Node temp = head;
 
         while (temp != null) {
-            System.out.print("LinkedList contains: " +temp.data + " ");
+            System.out.print("Linked list contains: " + temp.data + " ");
             temp = temp.next;
         }
+
+        System.out.println();
+
+        return head;
     }
 
+    public static Node reverseLL() {
+        
+        if (head == null) {
+            System.out.println("List is empty");
+            return head;
+        }
 
-public static void main(String[] args) {
+        Node prev = null;
+        Node current = head;
 
-    menu();
+        while (current != null) {
+           Node next = current.next;
+            current.next = prev;
+            prev = current;
+            current = next;
+        }
+
+        head = prev;
+
+        return head;
+    }
+
+    public static void main(String[] args) {
+
+        menu();
     }
 }
