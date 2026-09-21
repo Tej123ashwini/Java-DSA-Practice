@@ -126,7 +126,20 @@ public class Main {
     }
 
     public static void DeleteExpense() {
+        if(ex.isEmpty()) {
+            System.out.println("Empty");
+            return;
+        }
+        System.out.println("delete the expense by entering the id: ");
+        int delete = sc.nextInt();
+        boolean found = false;
 
+        for(Expense ll : ex) {
+            if(ll.id == delete) {
+                ex.remove();
+                found = true;
+            }
+        }
     }
 
     public static void SearchExpense() {
