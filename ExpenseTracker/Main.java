@@ -19,8 +19,9 @@ public class Main {
         System.out.println("2. View Expenses");
         System.out.println("3. Delete Expense");
         System.out.println("4. Search Expense");
-        System.out.println("5. Total Expenses");
-        System.out.println("6. Exit");
+        System.out.println("5. Update Expenses");
+        System.out.println("6. Total Expenses");
+        System.out.println("7. Exit");
 
         System.out.println("\nEnter your choice : ");
         int choice = sc.nextInt();
@@ -45,10 +46,14 @@ public class Main {
                 break;
 
             case 5:
-                TotalExpense();
+                UpdateExpense();
                 break;
 
             case 6:
+                TotalExpense();
+                break;
+
+            case 7:
                 System.out.println("Thank you...");
                 return;
 
@@ -103,6 +108,7 @@ public class Main {
         System.out.println("Expense successfully added.\n");
     }
 
+
     public static void DisplayExpense() {
         if(ex.isEmpty()) {
             System.out.println("Not yet added.");
@@ -125,9 +131,10 @@ public class Main {
         }
     }
 
+
     public static void DeleteExpense() {
         if(ex.isEmpty()) {
-            System.out.println("Empty");
+            System.out.println("Empty.....");
             return;
         }
         System.out.println("delete the expense by entering the id: ");
@@ -140,6 +147,9 @@ public class Main {
                 found = true;
             }
         }
+        if(!found) {
+            System.out.println("Does not conatin that expense.");
+        }
     }
 
     public static void SearchExpense() {
@@ -151,17 +161,48 @@ public class Main {
 
         System.out.printf("%-7s %-10s %-13s %-10s%n", "ID", "Desc", "Amount", "Category");
 
-	    	 for(Expense ll : ex) {
-	    		 if(ll.id == search) {
+	    	for(Expense ll : ex) {
+	    		if(ll.id == search) {
 
                     System.out.printf("%-7s %-10s %-13s %-10s%n", ll.id, ll.desc, ll.amount, ll.category);
 
-	    			 found = true;
-	    		 }
-	    	 }
-	    	 if(!found)
-	  		   System.out.println("Expense not found..\n");
+	    			found = true;
+	    		}
+	    	}
+	    	if(!found)
+	  		  System.out.println("\n Expense not found..\n");
     }
+
+
+    public static void UpdateExpense() {
+        if(ex.isEmpty()) {
+            System.out.println("Empty.........");
+            return;
+        }
+
+        System.out.println("Update the expense by entering the id: ");
+	    int update = sc.nextInt();
+        sc.nextLine();
+        System.out.println();
+
+        for(Expense ll: ex) {
+            if(ll.id == update) {
+                System.out.println("Enter the new Description : ");
+                ll.desc = sc.nextLine();
+
+                System.out.println("Enter the new amount : ");
+                ll.amount = sc.nextDouble();
+                sc.nextLine();
+
+                System.out.println("Enter the new category : ");
+                ll.category = sc.nextLine();
+
+                System.out.println("\nExpenses updated successfully.");
+            }
+        }
+    }
+
+
 
     public static void TotalExpense() {
 
