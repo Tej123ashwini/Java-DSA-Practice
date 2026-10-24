@@ -17,7 +17,9 @@ public class StackOperations {
             System.out.println("2. Pop");
             System.out.println("3. Peek");
             System.out.println("4. Display");
-            System.out.println("5. Exit");
+            System.out.println("5. Search");
+            System.out.println("6. Reverse Display");
+            System.out.println("7. Exit");
             System.out.print("Enter your choice: ");
 
             choice = sc.nextInt();
@@ -40,6 +42,14 @@ public class StackOperations {
                     break;
 
                 case 5:
+                    search();
+                    break;
+
+                case 6:
+                    reverseDisplay();
+                    break;
+
+                case 7:
                     System.out.println("Exiting...");
                     break;
 
@@ -47,7 +57,7 @@ public class StackOperations {
                     System.out.println("Invalid choice. Please try again.");
             }
 
-        } while (choice != 5);
+        } while (choice != 7);
     }
 
     public static void push() {
@@ -96,6 +106,37 @@ public class StackOperations {
             }
         }
     }
+
+    public static void search() {
+        System.out.print("Enter the element to be searched: ");
+        int value = sc.nextInt();
+        boolean found = false;
+
+        for(int i = top;i >=0;i--) {
+            if(stack[i] == value) {
+                System.out.println("The element " + value + " is found at position " + (i + 1));
+                found = true;
+                return;
+            }
+        }
+
+        if (!found) {
+            System.out.println("The element " + value + " is not found in the stack.");
+        }
+    }
+
+    public static void reverseDisplay() {
+        if (top == -1) {
+            System.out.println("Stack is empty.");
+        } else {
+            System.out.println("Stack elements are : ");
+
+            for (int i = top; i >= 0; i--) {
+                System.out.print(stack[i]);
+            }
+        }
+    }
+
 
     public static void main(String[] args) {
         System.out.print("Enter the size of the stack: ");
