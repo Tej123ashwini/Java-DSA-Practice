@@ -205,6 +205,28 @@ public class Main {
 
 
     public static void TotalExpense() {
+        int count = 0;
+        double totalAmount = 0.0;
+
+        for(Expense ll : ex) {
+            count++;
+        }
+        System.out.println("The total expenses are : " + count);
+
+        for(Expense ll : ex) {
+            totalAmount += ll.amount;
+        }
+        System.out.println("Total amount is : " + totalAmount);
+    }
+
+    public static void categoryExpenses() {
+
+        HashMap <String, Double> map = new HashMap <>();
+
+        for()
+        System.out.println("Enter the category to search for: ");
+        String category = sc.nextLine();
+
 
     }
 
