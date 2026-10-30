@@ -1,5 +1,7 @@
 package ExpenseTracker;
 
+import java.util.HashMap;
+import java.util.Iterator;
 import java.util.LinkedList;
 import java.util.Scanner;
 
@@ -21,9 +23,15 @@ public class Main {
         System.out.println("4. Search Expense");
         System.out.println("5. Update Expenses");
         System.out.println("6. Total Expenses");
-        System.out.println("7. Exit");
+        System.out.println("7. Category Expenses");
+        System.out.println("8. Exit");
 
         System.out.println("\nEnter your choice : ");
+        if(!sc.hasNextInt()) {
+            System.out.println("Please enter a valid number.");
+            sc.nextLine();
+            continue;
+        }
         int choice = sc.nextInt();
         System.out.println();
 
@@ -54,6 +62,10 @@ public class Main {
                 break;
 
             case 7:
+                categoryExpenses();
+                break;
+
+            case 8:
                 System.out.println("Thank you...");
                 return;
 
@@ -72,6 +84,14 @@ public class Main {
         int id = sc.nextInt();
         sc.nextLine();
 
+        for(Expense ll : ex) {
+            if(ll.id == id) {
+                System.out.println("Id already exists. Please enter the valid id.");
+                System.out.println("Enter the id : ");
+                id = sc.nextInt();
+                sc.nextLine();
+            }
+        }
         while(id <= 0) {
             System.out.println("Invalid id. Please enter the valid id.");
             System.out.println("Enter the id : ");
@@ -95,9 +115,23 @@ public class Main {
         Double amount = sc.nextDouble();
         sc.nextLine();
 
+        while(amount <= 0) {
+            System.out.println("Invalid expense. Please enter the valid amount.");
+            System.out.println("Enter the amount : ");
+            amount = sc.nextDouble();
+            sc.nextLine();
+        }
+
         //category
         System.out.println("Enter the category : ");
         String category = sc.nextLine();
+
+        while(category.trim().isEmpty()) {
+            System.out.println("Category can not be empty.");
+
+            System.out.println("Enter the category : ");
+            category = sc.nextLine();
+        }
 
         //create the object
         Expense expense = new Expense(id, desc, amount, category);
@@ -122,7 +156,7 @@ public class Main {
 
         for(Expense ll : ex) {
 
-            System.out.printf("%-7s %-10s %-13s %-10s%n", ll.id, ll.desc, ll.amount, ll.category);
+            System.out.printf("%-7d %-15s ₹%-12.2f %-10s%n", ll.id, ll.desc, ll.amount, ll.category);
 
             // System.out.println("id: " + ll.id + "\n" +
             //                     "Desc : " + ll.desc + "\n" +
@@ -134,25 +168,35 @@ public class Main {
 
     public static void DeleteExpense() {
         if(ex.isEmpty()) {
-            System.out.println("Empty.....");
+            System.out.println("No expenses available to delete.");
             return;
         }
         System.out.println("delete the expense by entering the id: ");
         int delete = sc.nextInt();
         boolean found = false;
 
-        for(Expense ll : ex) {
+        Iterator<Expense> iterator = ex.iterator();
+
+        while(iterator.hasNext()) {
+            Expense ll = iterator.next();
+
             if(ll.id == delete) {
-                ex.remove();
-                found = true;
+            iterator.remove();
+            found = true;
+            break;
             }
         }
         if(!found) {
-            System.out.println("Does not conatin that expense.");
+            System.out.println("Does not contain that expense.");
         }
     }
 
     public static void SearchExpense() {
+
+        if(ex.isEmpty()) {
+            System.out.println("No expenses available to search.");
+            return;
+        }
 
         System.out.println("Search the expenses by entering the id: ");
 	    int search = sc.nextInt();
@@ -176,7 +220,7 @@ public class Main {
 
     public static void UpdateExpense() {
         if(ex.isEmpty()) {
-            System.out.println("Empty.........");
+            System.out.println("No expenses available to update.");
             return;
         }
 
@@ -185,17 +229,47 @@ public class Main {
         sc.nextLine();
         System.out.println();
 
+        for(Expense ll : ex) {
+            if(ll.id != update) {
+                System.out.println("Id is not exists. Please enter the valid id.");
+                System.out.println("Enter the id : ");
+                update = sc.nextInt();
+                sc.nextLine();
+            }
+        }
+
         for(Expense ll: ex) {
             if(ll.id == update) {
                 System.out.println("Enter the new Description : ");
                 ll.desc = sc.nextLine();
 
+                while(ll.desc.trim().isEmpty()) {
+                    System.out.println("Description can not be empty.");
+
+                    System.out.println("write the description of the expense : ");
+                    ll.desc = sc.nextLine();
+                }
+
                 System.out.println("Enter the new amount : ");
                 ll.amount = sc.nextDouble();
                 sc.nextLine();
 
+                while(ll.amount <= 0) {
+                    System.out.println("Invalid expense. Please enter the valid amount.");
+                    System.out.println("Enter the amount : ");
+                    ll.amount = sc.nextDouble();
+                    sc.nextLine();
+                }
+
                 System.out.println("Enter the new category : ");
                 ll.category = sc.nextLine();
+
+                while(ll.category.trim().isEmpty()) {
+                    System.out.println("Category can not be empty.");
+
+                    System.out.println("Enter the category : ");
+                    ll.category = sc.nextLine();
+                }
 
                 System.out.println("\nExpenses updated successfully.");
             }
@@ -205,6 +279,11 @@ public class Main {
 
 
     public static void TotalExpense() {
+        if(ex.isEmpty()) {
+            System.out.println("No expenses available.");
+            return;
+        }
+
         int count = 0;
         double totalAmount = 0.0;
 
@@ -216,18 +295,33 @@ public class Main {
         for(Expense ll : ex) {
             totalAmount += ll.amount;
         }
-        System.out.println("Total amount is : " + totalAmount);
+        System.out.printf("Total amount is: ₹%.2f%n", totalAmount);    
     }
 
+
     public static void categoryExpenses() {
+        if(ex.isEmpty()) {
+            System.out.println("No expenses available.");
+            return;
+        }
 
-        HashMap <String, Double> map = new HashMap <>();
+        HashMap<String, Double> map = new HashMap<>();
 
-        for()
+        sc.nextLine();
         System.out.println("Enter the category to search for: ");
         String category = sc.nextLine();
+        System.out.println();
 
+        for(Expense ll : ex) {
+            map.put(ll.category,map.getOrDefault(ll.category,0.0)+ll.amount);
+        }
 
+        if(map.containsKey(category)) {
+            System.out.println(category + " total expenses amt is : " + map.get(category));
+        }
+        else {
+            System.out.println(category + " category not found.");
+        }
     }
 
 

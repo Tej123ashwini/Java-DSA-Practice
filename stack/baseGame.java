@@ -31,6 +31,6 @@ class baseGame {
 
         baseGame bg = new baseGame();
         System.out.println(
-        bg.baseGameProblem(new String[]{"5","-2","4","C","D","9","+","+"})
+        bg.baseGameProblem(new String[]{"5", "2", "C", "D", "+"})                  //"5","-2","4","C","D","9","+","+"
 );    }
 }
