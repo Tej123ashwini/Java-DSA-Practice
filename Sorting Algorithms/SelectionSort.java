@@ -18,13 +18,15 @@ public class SelectionSort {
         }
 
         for(int i=0;i<n-1;i++) {
+            int min = i;
             for(int j=i+1;j<n;j++) {
-                if(arr[i] > arr[j]) {
-                    int t = arr[i];
-                    arr[i] = arr[j];
-                    arr[j] = t;
+                if(arr[j] > arr[min]) {
+                    min = j;
                 }
             }
+            int t = arr[i];
+            arr[i] = arr[j];
+            arr[j] = t;
         }
 
         System.out.println("Sorted Array : ");
