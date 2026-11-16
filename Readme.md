@@ -14,17 +14,17 @@ The main objective of this repository is to improve my programming fundamentals,
 
 ## Repository Structure
 
-Java-DSA-Practice/
+Java-DSA-Practice
 │
-├── Arrays/
-├── CSS-Practice/
-├── StudentManagementSystem/
-├── ExpenseTracker/
-├── Stack/
-├── LinkedList/
-├── JavaScript/
-├── String/
-└── FileHandling/
+├── Arrays
+├── CSS-Practice
+├── StudentManagementSystem
+├── ExpenseTracker
+├── Stack
+├── LinkedList
+├── JavaScript
+├── String
+└── FileHandling
 
 
 ## Topics and Practice
