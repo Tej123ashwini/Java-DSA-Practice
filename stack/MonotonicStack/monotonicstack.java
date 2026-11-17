@@ -15,7 +15,7 @@ public class monotonicstack {
 
         for(int i=0;i<n;i++) {
             int data = sc.nextInt();
-            while (!st.isEmpty() && st.peek() < data) {
+            while (!st.isEmpty() && st.peek() < data) {          // for increasing monotonic staxk st.peek() > data
                 st.pop();
             }
             st.push(data);
